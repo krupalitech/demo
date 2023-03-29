@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import _, { shuffle } from "lodash";
+import _, { range, shuffle } from "lodash";
 
 import { useState } from "react";
 import Card from "@mui/material/Card";
@@ -36,24 +36,26 @@ const CustCardPage = () => {
   const [clickValue, setClickValue] = useState([]);
   const [num, setNum] = useState(0);
 
-  //const calculation = React.useMemo(() => longExecuteThisFunction(num), [num]);
 
   const [selectedStack, setSelectedStack] = useState([]);
 
+  const [shuffledNumbers, setShuffledNumbers] = useState([]);
+  
   const handleShuffle = () => {
-    // Create a new array to store the shuffled numbers
-    const shuffledNumbers = [...selectedStack];
-  
-    // Shuffle the array using Lodash shuffle function
-    shuffle(shuffledNumbers);
-  
-    // Update the state of selectedStack with the shuffled array
-    setSelectedStack(shuffledNumbers);
+    const numbers = range(1, 38);
+    const shuffled = shuffle(numbers);
+    setShuffledNumbers(shuffled);
   };
+  // const handleClick12 = (number) => {
+  //   if (!selectedNumbers.includes(number)) {
+  //     setSelectedNumbers([...selectedNumbers, number]);
+  //   } else {
+  //     setSelectedNumbers(selectedNumbers.filter((n) => n !== number));
+  //   }
+  // };
+ 
 
-  // const handleShuffle = useCallback(() => {
-  //   setSelectedStack(shuffle(selectedStack));
-  // }, [selectedStack]);
+ 
 
   const deleteCount = () => {};
 
